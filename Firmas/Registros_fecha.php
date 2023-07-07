@@ -103,10 +103,10 @@
     <div id="registros">
         <?php
             // Conexión a la base de datos (modifica los valores según tu configuración)
-            $servidor = "localhost";
-            $usuario = "root";
+            $servidor = "";
+            $usuario = "";
             $contrasena = "";
-            $basedatos = "control_vehicular";
+            $basedatos = "";
             
             $conexion = mysqli_connect($servidor, $usuario, $contrasena, $basedatos);
             
