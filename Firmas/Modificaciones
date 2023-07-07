@@ -1,0 +1,7 @@
+Modificaciones de datos del servidor seran en:
+
+eliminar_registro.php linea 3 - 6
+guardar.php linea 3 - 6
+Registros_fecha.php linea 106 - 109
+Todos_Registros.php linea 72 - 75
+Vista_Registro.php linea 86 - 89

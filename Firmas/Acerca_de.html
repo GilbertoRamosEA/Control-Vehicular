@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Acerca de</title>
+  <link rel="icon" type="image/x-icon" href="imagenes/Leoncito.png">
+  <meta charset="UTF-8">
+  <style>
+    body {
+      background-color: #f2f2f2;
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .easter-egg-cat {
+      position: absolute;
+      pointer-events: none;
+      animation: wiggle 1s infinite ease-in-out;
+      max-width: 50px;
+    }
+
+    .logo {
+      height: 75px;
+    }
+
+    @keyframes wiggle {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      50% { transform: translate(-50%, -50%) rotate(10deg); }
+      100% { transform: translate(-50%, -50%) rotate(0deg); }
+    }
+
+    .info-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 9999;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .play-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .play-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+  <script>
+    function iniciarAnimacion() {
+      // Eliminar el botón "Play aquí"
+      var playButton = document.getElementById('playButton');
+      playButton.remove();
+
+      // Reproducir el audio del proyecto (reemplaza con tu ruta de audio)
+      var audio = new Audio('imagenes/logos/db/ea3015.mp3');
+      audio.play();
+
+      // Mostrar los leones durante 3 minutos y 16 segundos (196 segundos)
+      var endTime = Date.now() + 196000;
+
+      var leonInterval = setInterval(function() {
+        if (Date.now() >= endTime) {
+          clearInterval(leonInterval);
+        } else {
+          var cat = document.createElement("img");
+          cat.src = "imagenes/Leoncito.png";
+          cat.className = "easter-egg-cat";
+          var randomX = Math.floor(Math.random() * window.innerWidth);
+          var randomY = Math.floor(Math.random() * window.innerHeight);
+          cat.style.top = randomY + "px";
+          cat.style.left = randomX + "px";
+          document.body.appendChild(cat);
+        }
+      }, 510);
+
+      // Detener el cambio de créditos después de 3 minutos y 16 segundos
+      setTimeout(function() {
+        clearInterval(creditInterval);
+      }, 196000);
+
+      // Cambiar gradualmente el contenido del div Creditos
+      var creditsContainer = document.querySelector('.Creditos');
+      var credits = creditsContainer.children;
+      var currentCreditIndex = 0;
+
+      function showNextCredit() {
+        credits[currentCreditIndex].classList.add('hidden');
+        currentCreditIndex = (currentCreditIndex + 1) % credits.length;
+        credits[currentCreditIndex].classList.remove('hidden');
+      }
+
+      var creditInterval = setInterval(showNextCredit, 6000);
+    }
+  </script>
+</head>
+<body>
+<div class="info-container">
+  <div class="Creditos">
+    <div class="Credito1">
+      <h2>Acerca de este proyecto "Control vehicular CUCEI"</h2>
+      <img src="imagenes/logos/CUCEICV.png" alt="Logo 1" class="logo">
+    </div>
+    <div class="Credito2 hidden">
+      <h2>Desarrollado por Gilberto Alvaro Ramos Lopez "E.A."</h2>
+      <a href="https://www.linkedin.com/in/gilberto-alvaro-ramos-lopez/" target="_blank">
+        <img src="imagenes/logos/E_A.png" alt="Logo 1" class="logo">
+      </a>
+    </div>
+    <div class="Credito3 hidden">
+      <h2>Departamento de desarrollo de aplicaciones móbiles</h2>
+      <img src="imagenes/logos/CuceiMobile.png" alt="Logo 2" class="logo">
+    </div>
+    <div class="Credito4 hidden">
+      <h2>Centro Universitario de Ciencias Exactas e Ingenierías</h2>
+      <img src="imagenes/logos/Udgcucei.png" alt="Logo 3" class="logo">
+    </div>
+  </div>
+  <button id="playButton" onclick="iniciarAnimacion()" class="play-button">Play aquí!!!</button>
+</div>
+</body>
+</html>
