@@ -69,10 +69,10 @@
     <div id="registros">
         <?php
         // Conexión a la base de datos
-        $servername = "localhost";
-        $username = "root";
+        $servername = "";
+        $username = "";
         $password = "";
-        $dbname = "control_vehicular";
+        $dbname = "";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
 
