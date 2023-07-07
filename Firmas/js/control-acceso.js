@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const passwordValue = passwordInput.value;
   
       // Validar los datos ingresados
-      if (usernameValue === "Admin" && passwordValue === "CVCUCEI") {
+      if (usernameValue === "" && passwordValue === "") {
         // Establecer una cookie o variable de sesión para indicar que el usuario ha iniciado sesión
         // Esto permite que otras páginas verifiquen si el usuario ha iniciado sesión correctamente
         document.cookie = "logged_in=true"; // Establecer una cookie
